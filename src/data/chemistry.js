@@ -77,6 +77,14 @@ const POTIONS = {
 			burnJunk: 1
 		}
 	},
+	synthPotionCult: {
+		item: "potionCult",
+		time: 2,
+		requiredItems: {
+			water: 3,
+			oxygen: 1,
+		}
+	},
 	synthPotionChem: {
 		item: "potionChemistry",
 		time: 2,
@@ -106,6 +114,15 @@ const POTIONS = {
 			sacid: 1,
 			lithium: 1,
 			power: 1
+		}
+	},
+	synthPotionLing: {
+		item: "potionLing",
+		time: 2,
+		requiredItems: {
+			lithium: 1,
+			oxygen: 2,
+			potionCult: 1
 		}
 	},
 	synthPotionTinkering: {
@@ -140,6 +157,15 @@ const POTIONS = {
 			foodPasta1: 1
 		}
 	},
+	synthPotionBartending: {
+		item: "potionBartending",
+		time: 2,
+		requiredItems: {
+			water: 2,
+			oil: 2,
+			sacid: 2
+		}
+	},
 	synthPotionFabrication: {
 		item: "potionFabrication",
 		time: 2,
@@ -147,6 +173,14 @@ const POTIONS = {
 			oil: 3,
 			lithium: 4,
 			pillSpacelube: 1
+		}
+	},
+	synthPotionCargonia: {
+		item: "potionCargonia",
+		time: 2,
+		requiredItems: {
+			potionEngineering: 1,
+			mercury: 6
 		}
 	},
 	synthPotionShitposting: {

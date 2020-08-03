@@ -1,6 +1,7 @@
 
 export const PLAYER_BASE_STATS = {
 	maxHealth: 100,
+	regen: .2,
 	attackSpeed: 3,
 	precision: 0,
 	power: 0,
@@ -10,11 +11,13 @@ export const PLAYER_BASE_STATS = {
 	moveTime: 3.5,
 	bruteProtection: 0,
 	burnProtection: 0,
-	damageType: "brute"
+	damageType: "brute",
+	luck: 5
 }
 
 export const ENEMY_BASE_STATS = {
 	maxHealth: 10,
+	regen: 0,
 	attackSpeed: 2.5,
 	precision: 1,
 	power: 1,
@@ -23,7 +26,8 @@ export const ENEMY_BASE_STATS = {
 	moveTime: 3,
 	bruteProtection: 0,
 	burnProtection: 0,
-	damageType: "brute"
+	damageType: "brute",
+	luck: 0
 }
 
 // This adds to a, so it should only be used on a fresh object
@@ -58,12 +62,16 @@ export function calcRobustness(stats, mobType) {
 	robustness += stats.precision / 3;
 	robustness += stats.power / 3;
 	robustness += stats.evasion / 3;
+	
+	// wtf do I do with these new stats
+	robustness += stats.luck / 6
+	robustness += stats.regen * 6
 
-	// Health should matter, but only a little
-	robustness += stats.maxHealth / 35;
+	// Health should matter, but only a little, protection got moved into this
+	robustness += (stats.maxHealth / 35 *(1 + Math.min(stats.burnProtection, stats.bruteProtection) / 100));
 
 	// Protection is a survivability multiplier
-	robustness *= 1 + Math.min(stats.burnProtection, stats.bruteProtection) / 100;
+	//robustness *= 1 + Math.min(stats.burnProtection, stats.bruteProtection) / 100;
 
 	return Math.round(robustness);
 }

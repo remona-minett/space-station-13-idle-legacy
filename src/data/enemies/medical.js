@@ -17,11 +17,15 @@ export default {
 				itemTable: [
 					{
 						id: 'foot',
-						weight: 25
+						weight: 18
 					},
 					{
 						id: 'innocent',
 						weight: 14
+					},
+					{
+						id: 'drinkDoctorsDelight',
+						weight: 2
 					},
 					{
 						id: 'q_foodMeatA',
@@ -106,12 +110,12 @@ export default {
 						weight: 6
 					},
 					{
-						id: 'pillTrifluoperazine',
+						id: 'pillPrecision',
 						count: 10,
 						weight: 5
 					},
 					{
-						id: 'MouseCarcass',
+						id: 'mouseCarcass',
 						weight: 4
 					},
 				]

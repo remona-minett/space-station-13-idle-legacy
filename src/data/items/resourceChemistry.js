@@ -38,6 +38,7 @@ export const GRAYTIDING_POTION_PERCENT = .15;
 export const TINKERING_POTION_PERCENT = .30;
 export const BOTANY_POTION_PERCENT = .3;
 export const COOKING_POTION_PERCENT = .25;
+export const BARTENDING_POTION_LEVELS = 10;
 
 const POTIONS = {
 	potionMining: {
@@ -104,6 +105,14 @@ const POTIONS = {
 		potionJob: "cooking",
 		potionCharges: 10
 	},
+	potionBartending: {
+		name: "Powerful Shaker",
+		sellPrice: 180,
+		icon: require("@/assets/art/bartending/icon.png"),
+		description: `Reduces the level requirement of Bartending actions by ${BARTENDING_POTION_LEVELS}.`,
+		potionJob: "bartending",
+		potionCharges: 10
+	},
 	potionFabrication: {
 		name: "Bluespace Acid",
 		sellPrice: 208,
@@ -119,6 +128,30 @@ const POTIONS = {
 		description: "Allows you to gain additional XP when completing ??? actions. Highly Toxic.",
 		potionJob: "shitposting",
 		potionCharges: 5
+	},
+	potionCargonia: {
+		name: "Social Lubricant",
+		sellPrice: 66,
+		icon: require("@/assets/art/chemistry/cargonia.png"),
+		description: "Whenever you get money from cargonia, also get that much power.",
+		potionJob: "cargonia",
+		potionCharges: 1
+	},
+	potionCult: {
+		name: "Heparin",
+		sellPrice: 42,
+		icon: require("@/assets/art/chemistry/chemCult.png"),
+		description: "Your cult sacrifices are twice as fast.",
+		potionJob: "cult",
+		potionCharges: 10
+	},
+	potionLing: {
+		name: "Tofurky Proteins",
+		sellPrice: 132,
+		icon: require("@/assets/art/chemistry/chemLing.png"),
+		description: "Changeling actions require one less meat.",
+		potionJob: "ling",
+		potionCharges: 10
 	}
 }
 
@@ -200,7 +233,7 @@ const PILLS = {
 	pillPrecision: {
 		name: "Trifluoperazine",
 		sellPrice: 21,
-		icon: require("@/assets/art/combat/items/pill4.png"),
+		icon: require("@/assets/art/combat/items/pill6.png"),
 		equipmentSlot: "pocket",
 		stats: {
 			maxHealth: 0,

@@ -77,6 +77,10 @@ export default {
 						weight: 5
 					},
 					{
+						id: 'startCult',
+						weight: 4
+					},
+					{
 						id: 'meleeBlunt3',
 						weight: .5
 					},
@@ -116,12 +120,16 @@ export default {
 					{
 						id: 'iron',
 						count: [1, 5],
-						weight: 19
+						weight: 12
 					},
 					{
 						id: "ammoEnergy1",
 						weight: 10,
 						count: [1, 4]
+					},
+					{
+						id: "drinkManlyDorf",
+						weight: 7,
 					},
 					{
 						id: "potionMining",
@@ -158,19 +166,27 @@ export default {
 				itemTable: [
 					{
 						id: 'pillKrokodil',
-						weight: 35
+						weight: 23
+					},
+					{
+						id: 'drinkOrangeJuice',
+						weight: 14
+					},
+					{
+						id: 'drinkTomatoJuice',
+						weight: 14
 					},
 					{
 						id: 'mushroom',
-						weight: 24
+						weight: 14
 					},
 					{
 						id: 'meleeSharp2',
-						weight: 20
+						weight: 10
 					},
 					{
 						id: "meleeBlunt2",
-						weight: 20,
+						weight: 10,
 					},
 					{
 						id: "supplyCrate",

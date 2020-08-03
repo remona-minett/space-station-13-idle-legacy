@@ -139,6 +139,9 @@ const inventory = {
 		},
 		shouldShowPurchase(state, getters, rootState, rootGetters) {
 			return (purchase) => {
+				if (purchase.hideIfXP) {
+					if (rootGetters[`${purchase.hideIfXP}/xp`]) return false;
+				}
 				if (purchase.requiredUpgrades) {
 					for (let [upgradeId, count] of Object.entries(purchase.requiredUpgrades)) {
 						if (rootGetters["upgrades/getNoEquipment"](upgradeId) != count) return false;
@@ -172,10 +175,13 @@ const inventory = {
 				if (!itemId) return false;
 				if (state.bank[itemId]) return true;
 
-				if (getters.bankItemIds.length >= getters.bankSlots) return false;
+				if (getters.bankFull) return false;
 
 				return true;
 			}
+		},
+		bankFull(state, getters) {
+			return getters.bankItemIds.length >= getters.bankSlots;
 		}
 	},
 	mutations: {
@@ -186,6 +192,10 @@ const inventory = {
 			let equipmentSlot = getEquipmentSlot(itemId);
 			if (getEquipmentStackable(itemId) && state.equipment[equipmentSlot].itemId == itemId) {
 				state.equipment[equipmentSlot].count += count;
+				if (state.equipment[equipmentSlot].count <= 0) {
+					state.equipment[equipmentSlot].count = 0;
+					state.equipment[equipmentSlot].itemId = null;
+				}
 			}
 
 			else if (!state.bank[itemId]) { // Not in the bank
@@ -282,11 +292,10 @@ const inventory = {
 
 			if (purchase.upgrade) {
 				commit("upgrades/set", purchase.upgrade, { root: true });
-			} else {
-				let yieldedItems = acquireItemFrom(purchase);
-				for (let [itemId, count] of Object.entries(yieldedItems)) {
-					commit("changeItemCount", { itemId, count });
-				}
+			}
+			let yieldedItems = acquireItemFrom(purchase);
+			for (let [itemId, count] of Object.entries(yieldedItems)) {
+				commit("changeItemCount", { itemId, count });
 			}
 
 			if (purchase.onPurchase) {

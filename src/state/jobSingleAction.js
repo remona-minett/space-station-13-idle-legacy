@@ -129,7 +129,7 @@ export default {
 			if (action.failure) {
 				if (Math.random() < action.failure.chance) {
 					// At least try again
-					EventBus.$emit("toast", { text: "Apprehended!" });
+					EventBus.$emit("toast", { text: action.failure.message });
 					dispatch("_startCoroutine", { actionId, action })
 					dispatch("playerMob/getHit", action.failure.damage, { root: true });
 
@@ -183,6 +183,11 @@ export default {
 				dispatch("_startCoroutine", { actionId, action })
 			} else {
 				commit("_setAction", null);
+			}
+			
+			// Place this here, so the new instance of the action gets cancelled
+			if (action.healthCost) {
+				dispatch("playerMob/getHit", action.healthCost, { root: true });
 			}
 		},
 		_resume({ state, dispatch }) {

@@ -1,4 +1,49 @@
 export default {
+	antag: {
+		name: "Black Operations Communicator",
+		description: "Can be exchanged to unlock a black market job, maybe you will pick the right one this timeline.",
+		icon: require("@/assets/art/shop/items/antag_anim.gif")
+	},
+	startCargonia: {
+		name: "Handheld Flash",
+		sellPrice: 33,
+		icon: require("@/assets/art/shop/items/startcargonia.png"),
+		description: "Depending on the timeline, you can use this to join cargonia",
+		equipmentSlot: "pocket",
+		stats: {
+			luck: 50,
+		}
+	},
+	startCult: {
+		name: "Cursed Touch",
+		icon: require("@/assets/art/shop/items/startcult.png"),
+		overlay: require("@/assets/art/shop/items/startcult_overlay.png"),
+		description: "Depending on the timeline, you can use this to join a cult",
+		sellPrice: 30,
+		overlayAppearInBack: true,
+		overlayRune: true,
+		equipmentSlot: "neck",
+		stats: {
+			maxHealth: 10,
+			regen: -.2,
+			protection: 1,
+			evasion: 1,
+			precision: 1,
+			power: 1,
+			luck: 1,
+			command: 1
+		},
+		requires: {
+			evasion: 1
+		},
+	},
+	startLing: {
+		name: "Harmless Red Slug",
+		description: "Depending on the timeline, you can use this to become a changeling",
+		sellPrice: 50000,
+		heal: -200,
+		icon: require("@/assets/art/shop/items/startling.png")
+	},
 	money: {
 		name: "Space Coins",
 		icon: require("@/assets/art/misc/coin-padded.png")
@@ -27,6 +72,11 @@ export default {
 		name: "Occult Tome",
 		sellPrice: 500,
 		icon: require("@/assets/art/shop/items/cultpart_anim.gif")
+	},
+	ertParts: {
+		name: "Nanotrasen Chip",
+		sellPrice: 500,
+		icon: require("@/assets/art/shop/items/ertpart.png")
 	},
 	wizParts: {
 		name: "Magical Scroll",
@@ -97,6 +147,61 @@ export default {
 			},
 			{
 				id: 'headEpic5',
+				weight: 1
+			},
+		]
+	},
+	hatCrate2: {
+		name: "Hat Crate, Winter Edition",
+		description: "Can be opened",
+		icon: require("@/assets/art/shop/items/hatcrateS2.png"),
+		itemTable: [
+			{
+				id: 'S2headCommon1',
+				weight: 14
+			},
+			{
+				id: 'S2headCommon2',
+				weight: 14
+			},
+			{
+				id: 'S2headCommon3',
+				weight: 14
+			},
+			{
+				id: 'S2headCommon4',
+				weight: 14
+			},
+			{
+				id: 'S2headRare1',
+				weight: 5
+			},
+			{
+				id: 'S2headRare2',
+				weight: 5
+			},
+			{
+				id: 'S2headRare3',
+				weight: 5
+			},
+			{
+				id: 'S2headRare4',
+				weight: 5
+			},
+			{
+				id: 'S2headEpic1',
+				weight: 1
+			},
+			{
+				id: 'S2headEpic2',
+				weight: 1
+			},
+			{
+				id: 'S2headEpic3',
+				weight: 1
+			},
+			{
+				id: 'S2headEpic4',
 				weight: 1
 			},
 		]
@@ -208,7 +313,7 @@ export default {
 			{
 				id: 'junk',
 				count: [1,25],
-				weight: 38
+				weight: 20
 			},
 			{
 				id: 'slimeBluespace',
@@ -220,6 +325,11 @@ export default {
 				weight: 13
 			},
 			{
+				id: 'startCargonia',
+				count: [1,10],
+				weight: 12
+			},
+						{
 				id: 'gunEnergy2',
 				weight: 11
 			},
@@ -255,21 +365,26 @@ export default {
 			weight: 5
 		},
 		{
+			id: 'startLing',
+			weight: 5
+		},
+		{
 			id: 'jumpsuitSecurity',
 			weight: 5
 		},
 		{
+			id: 'meleeBurn2',
+			weight: 4
+		},
+		{
 			id: 'armorSpecial1',
-			weight: 1
+			weight: 3
 		},
 		{
 			id: 'meleeBlunt9',
 			weight: 1
 		},
-		{
-			id: 'meleeBurn2',
-			weight: 1
-		},
+
 	]
 	},
 	lavaCrate: {
@@ -400,6 +515,44 @@ export default {
 			},
 		]
 	},
+	ertCrate: {
+		name: "Nanotrasen Droppod",
+		description: "Can be opened",
+		icon: require("@/assets/art/shop/items/ertdroppod.png"),
+		itemTable: [
+			{
+				id: 'meleeBurn4',
+				weight: 50
+			},
+			{
+				id: 'ammoEnergy4',
+				count: [1,50],
+				weight: 75
+			},
+			{
+				id: 'ammoEnergy3',
+				count: [1,100],
+				weight: 90
+			},
+			{
+				id: 'gunEnergy8',
+				weight: 20
+			},
+			{
+				id: 'companionAicard',
+				weight: 20
+			},
+			{
+				id: 'meleeShield2',
+				weight: 20
+			},
+			{
+				id: 'ticket60',
+				count: [1,3],
+				weight: 5
+			},
+		]
+	},
 	wizCrate: {
 		name: "Magical Crate",
 		description: "Can be opened",
@@ -435,6 +588,10 @@ export default {
 			{
 				id: 'capeShitposting',
 				weight: 20
+			},
+			{
+				id: 'spendTC',
+				weight: 3
 			},
 		]
 	}

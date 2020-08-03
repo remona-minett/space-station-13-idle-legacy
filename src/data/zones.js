@@ -32,7 +32,7 @@ export default [
 	{
 		name: "Kitchen",
 		icon: require("@/assets/art/combat/zones/kitchen.png"),
-		enemies: ["pete", "cannibal", "botanist","bartender"]
+		enemies: ["pete", "cannibal","bartender", "botanist"]
 	},
 
 	{
@@ -58,7 +58,12 @@ export default [
 	{
 		name: "AI Core",
 		icon: require("@/assets/art/combat/zones/core.png"),
-		enemies: ["drone","securitybot", "turrets", "AI"]
+		enemies: ["securitybot","drone","turrets", "AI"]
+	},
+	{
+		name: "Biohazard Outbreak",
+		icon: require("@/assets/art/combat/zones/zombies.png"),
+		enemies: ["zombie1","zombie2", "zombie3", "zombie4"]
 	},
 	{
 		name: "Worker Strike",
@@ -94,6 +99,13 @@ export default [
 		enemies: ["cult1", "cult2", "cult3", "cult4"],
 		boss: true,
 		purchases: ["bossTicket3"]
+	},
+	{
+		name: "Rogue Nanotrasen Team",
+		icon: require("@/assets/art/combat/zones/ert.png"),
+		enemies: ["ert1", "ert2", "ert3", "ert4"],
+		boss: true,
+		purchases: ["bossTicket55"]
 	},
 	{
 		name: "Wizard Federation 'Diplomats'",

@@ -18,6 +18,12 @@ import tinkering from "./tinkering";
 import command from "./command";
 import validhunting from "./validhunting";
 import shitposting from "./shitposting";
+import bartending from "./bartending";
+import cargonia from "./cargonia";
+import traitor from "./traitor";
+import cult from "./cult";
+import ling from "./ling";
+
 import precision from "./precision";
 import meleePower from "./meleePower";
 import rangedPower from "./rangedPower";
@@ -47,6 +53,11 @@ const modules = {
 	command,
 	validhunting,
 	shitposting,
+	bartending,
+	cargonia,
+	traitor,
+	cult,
+	ling,
 	precision,
 	meleePower,
 	rangedPower,
@@ -93,6 +104,7 @@ function customMerge(obj, source, root = true, softReset = false) {
 			}
 		}
 		else {
+			if (root && !source[key]) return;
 			Vue.set(obj, key, source[key]);
 		}
 	});
@@ -124,7 +136,7 @@ const vuexLocal = new VuexPersistence({
 
 const state = {
 	visibleSidebarItem: "mining",
-	update2Seen: false
+	update3Seen: false
 }
 
 let initialState = cloneDeep(state);
@@ -145,6 +157,27 @@ const store = new Vuex.Store({
 		},
 		welcomeMessageSeen(state) {
 			return state.welcomeMessageSeen;
+		},
+		isAnyAction(state, getters) {
+			let isCombat = getters["combat/targetEnemy"];
+			if (isCombat) return true;
+			for (let [moduleName, module] of Object.entries(modules)) {
+				let isActiveFunc = getters[`${moduleName}/currentActionId`];
+				if (isActiveFunc) return true;
+			}
+
+			return false;
+		},
+		isActionChronoProhibited(state, getters) {
+			let isCombat = getters["combat/targetEnemy"];
+			if (isCombat) return false;
+			for (let [moduleName, module] of Object.entries(modules)) {
+				let activeActionName = getters[`${moduleName}/currentActionId`];
+				if (activeActionName) {
+					let activeAction = getters[`${moduleName}/baseActions`][activeActionName]
+					return !!activeAction.chronoProhibited;
+				}
+			}
 		}
 	},
 	mutations: {

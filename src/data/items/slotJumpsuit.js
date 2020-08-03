@@ -6,7 +6,8 @@ export default {
 		icon: require("@/assets/art/combat/items/jumpsuit_medical.png"),
 		overlay: require("@/assets/art/combat/items/jumpsuit_medical_overlay.png"),
 		stats: {
-			maxHealth: 130
+			maxHealth: 100,
+			regen: .2
 		},
 		requires: {
 			evasion: 5
@@ -183,6 +184,25 @@ export default {
 			evasion: 5
 		}
 	},
+	jumpsuitBartending: {
+		name: "Bartending Jumpsuit",
+		sellPrice: 300,
+		equipmentSlot: "jumpsuit",
+		icon: require("@/assets/art/combat/items/jumpsuit_bartender.png"),
+		overlay: require("@/assets/art/combat/items/jumpsuit_bartender_overlay.png"),
+		stats: {
+			maxHealth: 50,
+			evasion: 3,
+			precision:5
+		},
+		description: "+20% Bartending XP",
+		xpBonuses: {
+			bartending: 20
+		},
+		requires: {
+			evasion: 5
+		}
+	},
 	jumpsuitSecurity: {
 		name: "Security Officer Jumpsuit",
 		sellPrice: 300,
@@ -210,7 +230,7 @@ export default {
 		icon: require("@/assets/art/combat/items/jumpsuit_clown.png"),
 		overlay: require("@/assets/art/combat/items/jumpsuit_clown_overlay.png"),
 		stats: {
-			maxHealth: 100,
+			maxHealth: 200,
 			precision: -5,
 			power: 0,
 			evasion: 8
@@ -221,6 +241,55 @@ export default {
 		},
 		requires: {
 			evasion: 15
+		}
+	},
+	jumpsuitChameleon: {
+		name: "Chameleon Suit",
+		sellPrice: 300,
+		equipmentSlot: "jumpsuit",
+		icon: require("@/assets/art/combat/items/jumpsuit_all.png"),
+		overlay: require("@/assets/art/combat/items/jumpsuit_all_overlay.png"),
+		stats: {
+			maxHealth: 100,
+			precision: 0,
+			power: 0,
+			evasion: 0,
+		},
+		description: "+50% XP to all default jobs",
+		xpBonuses: {
+			mining: 50,
+			engineering: 50,
+			fabrication: 50,
+			graytiding: 50,
+			tinkering: 50,
+			botany: 50,
+			cooking: 50,
+			bartending: 50,
+			xenobiology: 50,
+			chemistry: 50,
+			shitposting: 50,
+			validhunting: 50
+		},
+		requires: {
+			evasion: 1
+		}
+	},
+	jumpsuitTactical: {
+		name: "Syndicate Jumpsuit",
+		sellPrice: 7777,
+		equipmentSlot: "jumpsuit",
+		icon: require("@/assets/art/combat/items/jumpsuit_syndicate.png"),
+		overlay: require("@/assets/art/combat/items/jumpsuit_syndicate_overlay.png"),
+		stats: {
+			maxHealth: 77,
+			precision: 7,
+			command: 7,
+			power: 7,
+			evasion: 7,
+			luck: 7
+		},
+		requires: {
+			evasion: 1
 		}
 	},
 }

@@ -341,6 +341,7 @@ const SPECIALARMOR = {
 			protection: 9,
 			precision: 8,
 			power: 8,
+			regen: .5
 		},
 		requires: {
 			xenobiology: 10,
@@ -349,10 +350,161 @@ const SPECIALARMOR = {
 	},
 }
 
+const LINGAIM = {
+	lingAim1: {
+		name: "Core Enhancements",
+		equipmentSlot: "chest",
+		sellPrice: 3215,
+		icon: require("@/assets/art/combat/items/chest/arm_la1.png"), overlay: require("@/assets/art/combat/items/chest/arm_la1_overlay.png"),
+		stats: {
+			maxHealth: 150,
+		},
+		requires: {
+			command: 1
+		}
+	},
+	lingAim2: {
+		name: "Enhanced Nerves",
+		equipmentSlot: "chest",
+		sellPrice: 6250,
+		icon: require("@/assets/art/combat/items/chest/arm_la2.png"), overlay: require("@/assets/art/combat/items/chest/arm_la2_overlay.png"),
+		stats: {
+			maxHealth: 150,
+		},
+		requires: {
+			command: 10
+		}
+	},
+	lingAim3: {
+		name: "Leg Enhancements",
+		equipmentSlot: "chest",
+		sellPrice: 9375,
+		icon: require("@/assets/art/combat/items/chest/arm_la3.png"), overlay: require("@/assets/art/combat/items/chest/arm_la3_overlay.png"),
+		stats: {
+			maxHealth: 150,
+		},
+		requires: {
+			command: 20
+		}
+	},
+	lingAim4: {
+		name: "Enhanced Reactions",
+		equipmentSlot: "chest",
+		sellPrice: 12500,
+		icon: require("@/assets/art/combat/items/chest/arm_la4.png"), overlay: require("@/assets/art/combat/items/chest/arm_la4_overlay.png"),
+		stats: {
+			maxHealth: 150,
+		},
+		requires: {
+			command: 30
+		}
+	},
+	lingAim5: {
+		name: "Arm Enhancement",
+		equipmentSlot: "chest",
+		sellPrice: 689,
+		icon: require("@/assets/art/combat/items/chest/arm_la5.png"), overlay: require("@/assets/art/combat/items/chest/arm_la5_overlay.png"),
+		stats: {
+			maxHealth: 15625,
+		},
+		requires: {
+			command: 40
+		}
+	},
+	lingAim6: {
+		name: "Enhanced Flesh",
+		equipmentSlot: "chest",
+		sellPrice: 18750,
+		icon: require("@/assets/art/combat/items/chest/arm_la6.png"), overlay: require("@/assets/art/combat/items/chest/arm_la6_overlay.png"),
+		stats: {
+			maxHealth: 150,
+		},
+		requires: {
+			command: 50
+		}
+	},
+}
+
+const LINGPOWER = {
+	lingPower1: {
+		name: "Reinforced Ribs",
+		equipmentSlot: "chest",
+		sellPrice: 3125,
+		icon: require("@/assets/art/combat/items/chest/arm_lp1.png"), overlay: require("@/assets/art/combat/items/chest/arm_lp1_overlay.png"),
+		stats: {
+			maxHealth: 150,
+		},
+		requires: {
+			command: 1
+		}
+	},
+	lingPower2: {
+		name: "Reinforced Chest",
+		equipmentSlot: "chest",
+		sellPrice: 6250,
+		icon: require("@/assets/art/combat/items/chest/arm_lp2.png"), overlay: require("@/assets/art/combat/items/chest/arm_lp2_overlay.png"),
+		stats: {
+			maxHealth: 150,
+		},
+		requires: {
+			command: 10
+		}
+	},
+	lingPower3: {
+		name: "Reinforced Core",
+		equipmentSlot: "chest",
+		sellPrice: 9375,
+		icon: require("@/assets/art/combat/items/chest/arm_lp3.png"), overlay: require("@/assets/art/combat/items/chest/arm_lp3_overlay.png"),
+		stats: {
+			maxHealth: 150,
+		},
+		requires: {
+			command: 20
+		}
+	},
+	lingPower4: {
+		name: "Reinforced Torso",
+		equipmentSlot: "chest",
+		sellPrice: 12500,
+		icon: require("@/assets/art/combat/items/chest/arm_lp4.png"), overlay: require("@/assets/art/combat/items/chest/arm_lp4_overlay.png"),
+		stats: {
+			maxHealth: 150,
+		},
+		requires: {
+			command: 30
+		}
+	},
+	lingPower5: {
+		name: "Reinforced Legs",
+		equipmentSlot: "chest",
+		sellPrice: 15625,
+		icon: require("@/assets/art/combat/items/chest/arm_lp5.png"), overlay: require("@/assets/art/combat/items/chest/arm_lp5_overlay.png"),
+		stats: {
+			maxHealth: 150,
+		},
+		requires: {
+			command: 40
+		}
+	},
+	lingPower6: {
+		name: "Reinforced Body",
+		equipmentSlot: "chest",
+		sellPrice: 834,
+		icon: require("@/assets/art/combat/items/chest/arm_lp6.png"), overlay: require("@/assets/art/combat/items/chest/arm_lp6_overlay.png"),
+		stats: {
+			maxHealth: 18750,
+		},
+		requires: {
+			command: 50
+		}
+	},
+}
+
 Object.values(BRUTEARMOR).forEach(brutearmor => {
 	brutearmor.equipmentSlot = "chest";
 	let bruteConstant = Math.max(10, brutearmor.requires.evasion);
 
+	brutearmor.stats.regen = Math.trunc(bruteConstant * 1)/25;
 	brutearmor.stats.maxHealth = Math.trunc(bruteConstant * 4) + 10;
 	brutearmor.stats.power = Math.ceil(bruteConstant * .05);
 	brutearmor.stats.evasion = Math.ceil(bruteConstant * 0.45);
@@ -363,6 +515,7 @@ Object.values(BURNARMOR).forEach(burnarmor => {
 	burnarmor.equipmentSlot = "chest";
 	let burnConstant = Math.max(5, burnarmor.requires.evasion);
 
+	burnarmor.stats.regen = Math.trunc(burnConstant * 1)/25;
 	burnarmor.stats.maxHealth = Math.trunc(burnConstant * 4) + 10;
 	burnarmor.stats.precision = Math.ceil(burnConstant * .05);
 	burnarmor.stats.evasion = Math.ceil(burnConstant * 0.4);
@@ -373,6 +526,7 @@ Object.values(MECHS).forEach(mech => {
 	mech.equipmentSlot = "chest";
 	// mech.liftsRestrictions= ["mech"];
 	mech.overlayAppearInBack = true;
+	mech.overlayBlurry = true;
 	mech.overlay = mech.icon;
 	mech.requires.evasion = Math.trunc(mech.requires.fabrication / 5 * 3);
 	if (Object.values(mech.stats).length > 0) return;
@@ -388,6 +542,7 @@ Object.values(ASSAULTMECHS).forEach(assaultmech => {
 	assaultmech.equipmentSlot = "chest";
 	// assaultmech.liftsRestrictions= ["mech"];
 	assaultmech.overlayAppearInBack = true;
+	assaultmech.overlayBlurry = true;
 	assaultmech.overlay = assaultmech.icon;
 	assaultmech.requires.evasion = Math.trunc(assaultmech.requires.fabrication / 5 * 3);
 	if (Object.values(assaultmech.stats).length > 0) return;
@@ -400,10 +555,35 @@ Object.values(ASSAULTMECHS).forEach(assaultmech => {
 	assaultmech.stats.burnProtection = Math.trunc(assaultmech.requires.fabrication * .2);
 });
 
+Object.values(LINGAIM).forEach(lingaim => {
+	lingaim.equipmentSlot = "chest";
+	let bruteConstant = Math.max(5, lingaim.requires.command);
+
+	lingaim.stats.maxHealth = Math.trunc(bruteConstant * 20);
+	lingaim.stats.regen = Math.trunc(bruteConstant * 1)/10;
+	lingaim.stats.precision = Math.ceil(bruteConstant * 0.7);
+	lingaim.stats.power = Math.ceil(bruteConstant * 0.1);
+	lingaim.stats.bruteProtection = Math.round(bruteConstant * .2) + 2;
+});
+
+Object.values(LINGPOWER).forEach(lingpower => {
+	lingpower.equipmentSlot = "chest";
+	let bruteConstant = Math.max(5, lingpower.requires.command);
+
+	lingpower.stats.maxHealth = Math.trunc(bruteConstant * 20);
+	lingpower.stats.regen = Math.trunc(bruteConstant * 1)/10;
+	lingpower.stats.precision = Math.ceil(bruteConstant * 0.1);
+	lingpower.stats.power = Math.ceil(bruteConstant * 0.7);
+	lingpower.stats.burnProtection = Math.round(bruteConstant * .2) + 2;
+});
+
+
 export default {
 	...BRUTEARMOR,
 	...BURNARMOR,
 	...MECHS,
 	...ASSAULTMECHS,
-	...SPECIALARMOR
+	...SPECIALARMOR,
+	...LINGAIM,
+	...LINGPOWER,
 }

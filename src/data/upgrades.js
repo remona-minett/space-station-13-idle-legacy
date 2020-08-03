@@ -344,7 +344,7 @@ export const TINKERING_UPGRADE_CAP = .25;
 const TINKERING_UPGRADES = {}
 for (let i = 0; i < 5; i++) {
 	let upgrade = {
-		name: "Buy Balmer Spirits",
+		name: "Buy Well-Laid Plans",
 		description: `Each consecutive tinkering craft of the same item increases future crafting speeds by ${TINKERING_UPGRADE_INCREMENT * 100}%. This effect caps at ${(i + 1) * TINKERING_UPGRADE_CAP * 100}%`, // Expanded below
 		icon: require('@/assets/art/tinkering/upgrade1.png'),
 		requiredItems: {}, // Filled out below
@@ -363,6 +363,47 @@ for (let i = 0; i < 5; i++) {
 }
 
 
+export const BARTENDING_UPGRADE_INCREMENT = .05;
+export const BARTENDING_UPGRADE_CAP = 5;
+const BARTENDING_UPGRADES = {}
+for (let i = 0; i < 5; i++) {
+	let upgrade = {
+		name: "Expand Drink Table",
+		description: `Each unique drink in your inventory increases bartending speed by ${BARTENDING_UPGRADE_INCREMENT * 100}%. This effect caps at ${(i + 1) * BARTENDING_UPGRADE_CAP} unique drinks`, // Expanded below
+		icon: require('@/assets/art/bartending/upgrade1.png'),
+		requiredItems: {},
+		requiredLevels: { bartending: (i + 1) * 10 },
+		upgrade: "drinkTable",
+		requiredUpgrades: { drinkTable: i }
+	}
+
+	upgrade.requiredItems.money = calcCost(i, 5);
+
+	BARTENDING_UPGRADES[`upgradeBartending${i + 1}`] = upgrade;
+}
+
+
+export const ANTAG_UPGRADE_PERCENT = .05;
+const ANTAG_UPGRADES = {}
+for (let i = 0; i < 5; i++) {
+	let upgrade = {
+		name: "Black Operations Efficiency",
+		description: `Increases the speed of ALL Black Operations by +${ANTAG_UPGRADE_PERCENT * 100}%`, // Expanded below
+		icon: require('@/assets/art/shop/antagupgrade.png'),
+		requiredItems: {}, // Filled out below
+		requiredLevels: { validhunting: (i + 1) * 10 },
+		upgrade: "antagUpgrade",
+		requiredUpgrades: { antagUpgrade: i }
+	}
+
+	if (i != 0) {
+		upgrade.description = upgrade.description.replace("by", "by an additional");
+		upgrade.description += `, to +${(ANTAG_UPGRADE_PERCENT * (i + 1) * 100).toFixed()}% total`;
+	}
+	upgrade.requiredItems.money = calcCost(i, 5);
+
+	ANTAG_UPGRADES[`upgradeAntag${i + 1}`] = upgrade;
+}
 const JOB_UPGRADES = {
 	...MINING_UPGRADES,
 	...ENGINEERING_UPGRADES,
@@ -372,7 +413,9 @@ const JOB_UPGRADES = {
 	...BOTANY_UPGRADES,
 	...COOKING_UPGRADES,
 	...XENOBIO_UPGRADES,
-	...CHEMISTRY_UPGRADES
+	...CHEMISTRY_UPGRADES,
+	...BARTENDING_UPGRADES,
+	...ANTAG_UPGRADES,
 }
 
 // Add a required validhunting level

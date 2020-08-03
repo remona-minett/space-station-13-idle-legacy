@@ -80,6 +80,20 @@
                 for="showVirtualLevels"
               >Show Virtual Levels Beyond {{maxLevel}}</label>
             </div>
+            
+            <div class="custom-control custom-switch">
+              <input
+                v-model="showFullValues"
+                type="checkbox"
+                class="custom-control-input"
+                id="showFullValues"
+              />
+              <label
+                class="custom-control-label"
+                for="showFullValues"
+
+              >Display Full Item Counts in Jobs (may look ugly with huge numbers)</label>
+            </div>
             <button
               type="button"
               class="btn btn-primary my-1 d-block"
@@ -135,6 +149,15 @@
                   id="showAllActions"
                 />
                 <label class="custom-control-label" for="showAllActions">Show All Actions</label>
+              </div>
+              <div class="custom-control custom-switch">
+                <input
+                  v-model="unlockAllJobs"
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="unlockAllJobs"
+                />
+                <label class="custom-control-label" for="unlockAllJobs">Unlock All Jobs</label>
               </div>
               <div class="custom-control custom-switch">
                 <input
@@ -209,6 +232,14 @@ export default {
         this.$store.commit("cheats/setShowAllActions", value);
       }
     },
+    unlockAllJobs: {
+      get() {
+        return this.$store.getters["cheats/unlockAllJobs"];
+      },
+      set(value) {
+        this.$store.commit("cheats/setUnlockAllJobs", value);
+      }
+    },
     infiniteChrono: {
       get() {
         return this.$store.getters["cheats/infiniteChrono"];
@@ -231,6 +262,14 @@ export default {
       },
       set(value) {
         this.$store.commit("settings/setShowVirtualLevels", value);
+      }
+    },
+	showFullValues: {
+      get() {
+        return this.$store.getters["settings/showFullValues"];
+      },
+      set(value) {
+        this.$store.commit("settings/setShowFullValues", value);
       }
     },
     inventoryFullStop: {

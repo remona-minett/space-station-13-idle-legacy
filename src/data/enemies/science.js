@@ -69,6 +69,14 @@ export default {
 						id: 'meleeSharp5',
 						weight: 4
 					},
+					{
+						id: 'drinkManhattan',
+						weight: 4
+					},
+					{
+						id: 'drinkManhattanProject',
+						weight: 4
+					},
 				]
 			},
 			{

@@ -1,6 +1,6 @@
 import { MAX_LEVEL } from "@/data/experience";
 import { INVENTORY_UPGRADES, COMBAT_UPGRADES, JOB_UPGRADES } from "@/data/upgrades";
-import HEAD_ITEMS from '@/data/items/slotHead'
+import {HEAD_SEASON_ONE, HEAD_SEASON_TWO} from '@/data/items/slotHead'
 
 export const SECTIONS = [
 	{
@@ -13,9 +13,7 @@ export const SECTIONS = [
 	},
 	{
 		name: "Job Unlocks",
-		purchases: [
-			"unlockCooking", "unlockXenobiology", "unlockShitposting"
-		]
+		purchases: ["unlockFabrication", "unlockTinkering", "unlockChemistry", "unlockCooking", "unlockBartending", "unlockXenobiology", "unlockShitposting", "unlockCargonia","unlockTraitor", "unlockCult", "unlockLing"]
 	},
 	{
 		name: "Job Upgrades",
@@ -27,11 +25,11 @@ export const SECTIONS = [
 	},
 	{
 		name: "Gamble-O-Tron",
-		purchases: ["supplyCrate", "knifeCrate", "hatCrate", "revCrate", "secCrate", "lavaCrate", "syndieCrate",  "cultCrate", "wizCrate",]
+		purchases: ["supplyCrate", "knifeCrate", "hatCrate", "hatCrate2", "revCrate", "secCrate", "lavaCrate", "syndieCrate",  "cultCrate", "ertCrate", "wizCrate"]
 	},
 	{
 		name: "Clothes Vendo-Matic",
-		purchases: ["capeMining", "capeEngineering", "capeFabrication", "capeGraytiding", "capeTinkering", "capeBotany", "capeCooking", "capeXenobiology", "capeChemistry","capeValid", "capeShitposting"]
+		purchases: ["capeMining", "capeEngineering", "capeFabrication", "capeGraytiding", "capeTinkering", "capeBotany", "capeCooking", "capeBartending", "capeXenobiology", "capeChemistry","capeValid", "capeShitposting"]
 	}
 ]
 
@@ -109,7 +107,61 @@ const JOB_UNLOCKS = {
 		upgrade: "cookingUnlocked",
 		requiredUpgrades: {
 			cookingUnlocked: 0
-		}
+		},
+		hideIfXP: "cooking"
+	},
+	unlockBartending: {
+		name: "Unlock Bartending",
+		description: "Allows you to turn power, slimes, and ore into delicious drinks",
+		icon: require("@/assets/art/bartending/icon.png"),
+		requiredItems: {
+			money: 15000
+		},
+		upgrade: "bartendingUnlocked",
+		requiredUpgrades: {
+			bartendingUnlocked: 0
+		},
+		hideIfXP: "bartending"
+	},
+	unlockFabrication: {
+		name: "Unlock Fabrication",
+		description: "Allows you to turn raw minerals into ranged weapons and exosuits",
+		icon: require('@/assets/art/fabrication/icon.png'),
+		requiredItems: {
+			glass: 10,
+			power: 10,
+		},
+		upgrade: "fabricationUnlocked",
+		requiredUpgrades: {
+			fabricationUnlocked: 0
+		},
+		hideIfXP: "fabrication"
+	},
+	unlockTinkering: {
+		name: "Unlock Tinkering",
+		description: "Allows you to turn junk into weapons and armor",
+		icon: require('@/assets/art/tinkering/icon.png'),
+		requiredItems: {
+			junk: 3
+		},
+		upgrade: "tinkeringUnlocked",
+		requiredUpgrades: {
+			tinkeringUnlocked: 0
+		},
+		hideIfXP: "tinkering"
+	},
+	unlockChemistry: {
+		name: "Unlock Chemistry",
+		description: "Allows you to turn energy into job-boosting CHEMs and combat-boosting pills",
+		icon: require('@/assets/art/chemistry/icon.png'),
+		requiredItems: {
+			power: 20
+		},
+		upgrade: "chemistryUnlocked",
+		requiredUpgrades: {
+			chemistryUnlocked: 0
+		},
+		hideIfXP: "chemistry"
 	},
 	unlockXenobiology: {
 		name: "Unlock Xenobiology",
@@ -121,7 +173,8 @@ const JOB_UNLOCKS = {
 		upgrade: "xenobiologyUnlocked",
 		requiredUpgrades: {
 			xenobiologyUnlocked: 0
-		}
+		},
+		hideIfXP: "xenobiology"
 	},
 	unlockShitposting: {
 		name: "Unlock ???",
@@ -133,8 +186,65 @@ const JOB_UNLOCKS = {
 		upgrade: "shitpostingUnlocked",
 		requiredUpgrades: {
 			shitpostingUnlocked: 0
-		}
-	}
+		},
+		hideIfXP: "shitposting"
+	},
+	unlockCargonia: {
+		name: "Unlock Cargonia",
+		description: "Allows you to spend money for minerals and guns",
+		icon: require('@/assets/art/jobinfo/cargo_banner.png'),
+		requiredItems: {
+			antag: 1
+		},
+		upgrade: "cargoniaUnlocked",
+		requiredUpgrades: {
+			cargoniaUnlocked: 0
+		},
+		hideIfXP: "cargonia"
+	},
+	unlockTraitor: {
+		name: "Unlock Traitor",
+		description: "Allows you to spend 20 special Telecrystals to kickstart your progression",
+		icon: require('@/assets/art/traitor/icon.png'),
+		requiredItems: {
+			antag: 1
+		},
+		items: {
+			id: "spendTC",
+			count: 20
+		},
+		upgrade: "traitorUnlocked",
+		requiredUpgrades: {
+			traitorUnlocked: 0
+		},
+		hideIfXP: "traitor"
+	},
+	unlockCult: {
+		name: "Unlock Cult",
+		description: "Allows you to sacrifice health for dark runes and minions",
+		icon: require("@/assets/art/cult/Sacrifice_rune.png"),
+		requiredItems: {
+			antag: 1
+		},
+		upgrade: "cultUnlocked",
+		requiredUpgrades: {
+			cultUnlocked: 0
+		},
+		hideIfXP: "cult"
+	},
+	unlockLing: {
+		name: "Unlock Changeling",
+		description: "Allows you to shape meat into regenerative armor",
+		icon: require('@/assets/art/ling/icon.png'),
+		requiredItems: {
+			antag: 1
+		},
+		upgrade: "lingUnlocked",
+		requiredUpgrades: {
+			lingUnlocked: 0
+		},
+		hideIfXP: "ling"
+	},
 }
 
 const CAPES = {
@@ -208,6 +318,16 @@ const CAPES = {
 			money: 1000000
 		}
 	},
+	capeBartending: {
+		item: "capeBartending",
+		description: "Requires max Bartending to wear.",
+		requiredLevels: {
+			bartending: MAX_LEVEL
+		},
+		requiredItems: {
+			money: 1000000
+		}
+	},
 	capeXenobiology: {
 		item: "capeXenobiology",
 		description: "Requires max Xenobiology to wear.",
@@ -271,7 +391,14 @@ const CRATES = {
 	},
 	hatCrate: {
 		item: "hatCrate",
-		description: `No Key Required. Hats can not be refunded for scrap. Collect all ${Object.keys(HEAD_ITEMS).length}!`,
+		description: `No Key Required. Hats can not be refunded for scrap. Collect all ${Object.keys(HEAD_SEASON_ONE).length}!`,
+		requiredItems: {
+			money: 10000
+		}
+	},
+	hatCrate2: {
+		item: "hatCrate2",
+		description: `Christmas In July. I hope you asked for hats. Collect all ${Object.keys(HEAD_SEASON_TWO).length}!`,
 		requiredItems: {
 			money: 10000
 		}
@@ -309,6 +436,13 @@ const CRATES = {
 		description: "If you avert your eyes from the sigils and just reach into the pod you can escape mostly intact.",
 		requiredItems: {
 			cultParts: 20,
+		}
+	},
+	ertCrate: {
+		item: "ertCrate",
+		description: "A prize from Nanotrasen for stopping some internal problems, contains even more problems!",
+		requiredItems: {
+			ertParts: 20,
 		}
 	},
 	wizCrate: {
@@ -365,6 +499,15 @@ const TICKETS = {
 			ticket3: 5,
 		},
 		fightZone: "Bloodsworn Cultists"
+	},
+	bossTicket55: {
+		name: "Check Nanotrasen Reports",
+		description: "On purchase, starts a fight with a random boss in this zone.",
+		icon: require("@/assets/art/shop/items/ticket55.png"),
+		requiredItems: {
+			ticket55: 5,
+		},
+		fightZone: "Rogue Nanotrasen Team"
 	},
 	bossTicket60: {
 		name: "Schedule Celebrity Tour",

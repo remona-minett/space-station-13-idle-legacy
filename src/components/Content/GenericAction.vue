@@ -20,6 +20,13 @@
         v-if="action.failure"
       >{{action.failure.chance*100 | cleanNum}}% chance to fail and lose {{action.failure.damage}} health</p>
 
+      <p
+        class="failure text-center mt-1"
+        v-if="action.healthCost"
+      >Costs {{action.healthCost}} health</p>
+
+			<p class="chrono" v-if="action.chronoProhibited">Chrono Prohibited</p>
+
       <span v-if="locked" class="danger-bubble mt-1">LEVEL {{action.requiredLevel}}</span>
 
       <div class="d-flex flex-row align-items-center mt-2">
@@ -160,6 +167,11 @@ export default {
 }
 .failure {
   color: rgb(221, 99, 28);
+  max-width: 130px;
+  font-size: 14px;
+}
+.chrono {
+  color: rgb(28, 160, 221);
   max-width: 130px;
   font-size: 14px;
 }

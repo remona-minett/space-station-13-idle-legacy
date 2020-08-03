@@ -53,6 +53,8 @@ const chrono = {
 		},
 		active(state, getters, rootState, rootGetters) {
 			if (getters["desiredSpeed"] == 1) return false;
+			if (rootGetters["isActionChronoProhibited"]) return false;
+			if (rootGetters["upgrades/get"]("timeBankAutoPause") && !rootGetters["isAnyAction"]) return false;
 
 			return getters["remainingTime"] > 0 || rootGetters["cheats/infiniteChrono"];
 		},
@@ -62,7 +64,7 @@ const chrono = {
 			// let hours = `0${}`
 			var seconds = parseInt((duration / 1000) % 60),
 				minutes = parseInt((duration / (1000 * 60)) % 60),
-				hours = parseInt((duration / (1000 * 60 * 60)) % 24);
+				hours = parseInt((duration / (1000 * 60 * 60)));
 
 			hours = hours < 10 ? "0" + hours : hours;
 			minutes = minutes < 10 ? "0" + minutes : minutes;

@@ -449,7 +449,7 @@ const MENERGY = {
 		overlay: require("@/assets/art/combat/items/melee_e4_overlay_anim.gif"),
 		equipmentSlot: "hand",
 		stats: {
-			maxHealth: 5,
+			maxHealth: 40,
 			evasion: -5,
 			precision: 5,
 			attackSpeed: 2,
@@ -467,7 +467,7 @@ const MENERGY = {
 		overlay: require("@/assets/art/combat/items/melee_e5_overlay.gif"),
 		equipmentSlot: "hand",
 		stats: {
-			maxHealth: 5,
+			maxHealth: 50,
 			evasion: -5,
 			precision: 5,
 			attackSpeed: 2,
@@ -495,6 +495,22 @@ const MSHIELD = {
 		},
 		requires: {
 			evasion: 36
+		}
+	},
+	meleeShield2: {
+		name: "Telescopic Shield",
+		sellPrice: 1920,
+		equipmentSlot: "hand",
+		icon: require("@/assets/art/combat/items/hand/melee_shield2.png"),
+		overlay: require("@/assets/art/combat/items/hand/melee_shield2_overlay.png"),
+		stats: {
+			attackSpeed: 4.5,
+			evasion: 10,
+			power: 5,
+			precision: 0
+		},
+		requires: {
+			evasion: 46
 		}
 	}
 }
@@ -618,6 +634,24 @@ const GENERGY = {
 		requires: {
 			rangedPower: 50
 		}
+	},
+	gunEnergy8: {
+		name: "Pulse Carbine",
+		sellPrice: 2500,
+		equipmentSlot: "hand",
+		icon: require("@/assets/art/combat/items/gune_pulsecarbine.png"),
+		overlay: require("@/assets/art/combat/items/gune_pulsecarbine_overlay.png"),
+		ammoType: "energized",
+		stats: {
+			attackSpeed: 3,
+			evasion: 3,
+			power: 7,
+			precision: 10
+		},
+		requires: {
+			rangedPower: 50,
+			command: 30
+		}
 	}
 }
 
@@ -715,7 +749,7 @@ const GBULLET = {
 		overlay: require("@/assets/art/combat/items/gunb_shot6_overlay.png"),
 		ammoType: "ballistic",
 		stats: {
-			attackSpeed: 2,
+			attackSpeed: 2.5,
 			evasion: 8,
 			power: 4,
 			precision: 0
@@ -732,7 +766,7 @@ const GBULLET = {
 		overlay: require("@/assets/art/combat/items/gunb_shot7_overlay.png"),
 		ammoType: "ballistic",
 		stats: {
-			attackSpeed: 1,
+			attackSpeed: 2,
 			evasion: 9,
 			power: 4,
 			precision: 0
@@ -757,7 +791,126 @@ const GBULLET = {
 		requires: {
 			rangedPower: 40
 		}
-	}
+	},
+	gunRifle1: {
+		name: "Mosin-Nagant Rifle",
+		sellPrice: 140,
+		equipmentSlot: "hand",
+		icon: require("@/assets/art/combat/items/hand/gunR_naggant.png"),
+		overlay: require("@/assets/art/combat/items/hand/gunR_naggant_overlay.png"),
+		ammoType: "rifle",
+		stats: {
+			attackSpeed: 5,
+			evasion: 2,
+			power: 1,
+			precision: 1
+		},
+		requires: {
+			rangedPower: 1
+		}
+	},
+	gunRifle2: {
+		name: "WT-550 Autorifle",
+		sellPrice: 280,
+		equipmentSlot: "hand",
+		icon: require("@/assets/art/combat/items/hand/gunR_wt5.png"),
+		overlay: require("@/assets/art/combat/items/hand/gunR_wt5_overlay.png"),
+		ammoType: "rifle",
+		stats: {
+			attackSpeed: 5,
+			evasion: 4,
+			power: 2,
+			precision: 2
+		},
+		requires: {
+			rangedPower: 10
+		}
+	},
+	gunRifle3: {
+		name: "NT-ARG 'Boarder' Rifle",
+		sellPrice: 420,
+		equipmentSlot: "hand",
+		icon: require("@/assets/art/combat/items/hand/gunR_arg.png"),
+		overlay: require("@/assets/art/combat/items/hand/gunR_arg_overlay.png"),
+		ammoType: "rifle",
+		stats: {
+			attackSpeed: 5,
+			evasion: 6,
+			power: 3,
+			precision: 3
+		},
+		requires: {
+			rangedPower: 20
+		}
+	},
+	gunRifle4: {
+		name: "C20r Rifle",
+		sellPrice: 560,
+		equipmentSlot: "hand",
+		icon: require("@/assets/art/combat/items/hand/gunR_c20r.png"),
+		overlay: require("@/assets/art/combat/items/hand/gunR_c20r_overlay.png"),
+		ammoType: "rifle",
+		stats: {
+			attackSpeed: 5,
+			evasion: 8,
+			power: 4,
+			precision: 4
+		},
+		requires: {
+			rangedPower: 30
+		}
+	},
+	gunRifle5: {
+		name: "M-90gl Carbine",
+		sellPrice: 700,
+		equipmentSlot: "hand",
+		icon: require("@/assets/art/combat/items/hand/gunR_m90.png"),
+		overlay: require("@/assets/art/combat/items/hand/gunR_m90_overlay.png"),
+		ammoType: "rifle",
+		stats: {
+			attackSpeed: 5,
+			evasion: 10,
+			power: 5,
+			precision: 5
+		},
+		requires: {
+			rangedPower: 40
+		}
+	},
+	gunRifle6: {
+		name: "Sniper Rifle",
+		sellPrice: 840,
+		equipmentSlot: "hand",
+		icon: require("@/assets/art/combat/items/hand/gunR_sniper.png"),
+		overlay: require("@/assets/art/combat/items/hand/gunR_sniper_overlay.png"),
+		ammoType: "rifle",
+		stats: {
+			attackSpeed: 10,
+			evasion: 0,
+			power: 10,
+			precision: 15
+		},
+		requires: {
+			rangedPower: 50
+		}
+	},
+	gunRifle7: {
+		name: "Belt Fed L6 Saw",
+		sellPrice: 980,
+		equipmentSlot: "hand",
+		icon: require("@/assets/art/combat/items/hand/gunR_l6.png"),
+		overlay: require("@/assets/art/combat/items/hand/gunR_l6_overlay.png"),
+		ammoType: "rifle",
+		stats: {
+			attackSpeed: .3,
+			evasion: 0,
+			power: 25,
+			precision: 0
+		},
+		requires: {
+			rangedPower: 50
+		}
+	},
 }
 // 	mechGunEnergyRifle: {
 // 		name: "Mech Energy Rifle",
