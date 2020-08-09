@@ -1,4 +1,5 @@
-# Space Station Idle
+# LEGACY (1.2.0) Space Station Idle
+# This version is being maintained to give players the option to play an older version.
 
 Space Station Idle is a web-based idle game based on Melvor Idle, and set in the Space Station 13 universe.
 
